@@ -1,10 +1,20 @@
 func searchInsert(nums []int, target int) int {
-    var found int
-    for i:=0;i<len(nums);i++{
-        if nums[i] == target{
-            return i
-        }else if nums[i]<target  && i+1 <len(nums)+1 {
-            found = i+1
+   
+    var left int = 0
+    var right int = len(nums)-1
+    var found int = len(nums)
+    
+    for left<=right{
+        mid:=(left+right)/2
+        if nums[mid]==target{
+            return mid
+        }
+        if nums[mid]<target{
+            left = mid + 1
+        }
+        if nums[mid]>target{
+            found = mid
+            right = mid - 1
         }
     }
     return found
